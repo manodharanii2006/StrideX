@@ -23,6 +23,15 @@ import statistics
 import tempfile
 import uuid
 from typing import Any, Iterable, Mapping, Sequence
+from ai.features.gait_features import (
+    calculate_cadence,
+    calculate_walking_speed,
+    calculate_symmetry,
+    calculate_knee_angle,
+    calculate_hip_angle,
+    calculate_step_variability,
+)
+from ai.models.predictor import predict_risk       
 
 try:  # Optional computer-vision stack
     import cv2  # type: ignore
@@ -565,6 +574,32 @@ def process_gait_video(video: Any, max_sampled_frames: int = 120) -> dict[str, A
                 frame_index += 1
 
         duration = total_frames / fps if total_frames else (features[-1]["timestamp"] if features else 0)
+
+        # ---------- StrideX AI Metrics ----------
+        metrics = _calculate_gait_metrics(features)
+
+        cadence = metrics.get("cadence_estimate") or 90
+        walking_speed = round(1.1, 2)          # demo estimate
+        symmetry = metrics.get("step_symmetry", 80) 
+        knee_angle = round(
+            sum(f["left_knee_angle"] for f in features) / len(features), 1
+        )
+        hip_angle = round(120.0, 1)            # demo estimate
+        step_variability = round(
+            statistics.pstdev(f["left_ankle_y"] for f in features), 4
+        )
+
+        predicted_risk = predict_risk(
+           cadence=cadence,
+           walking_speed=walking_speed,
+           symmetry=symmetry,
+           knee_angle=knee_angle,
+           hip_angle=hip_angle,
+           step_variability=step_variability,
+           pressure_imbalance=2.0,
+           pain_score=2,
+        )
+
         if len(features) < 5:
             return {
                 "success": False,
@@ -600,6 +635,13 @@ def process_gait_video(video: Any, max_sampled_frames: int = 120) -> dict[str, A
             },
             "gait_metrics": metrics,
             "quality": metrics.get("pose_quality", 0),
+            "cadence": cadence,
+            "walking_speed": walking_speed,
+            "symmetry": symmetry,
+            "knee_angle": knee_angle,
+            "hip_angle": hip_angle,
+            "step_variability": step_variability,
+            "predicted_risk": predicted_risk,
         }
     except Exception as exc:
         return {"success": False, "message": f"Video pose processing failed: {exc}", "analysis_mode": "error"}
