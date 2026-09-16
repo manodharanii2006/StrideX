@@ -1,0 +1,736 @@
+{
+  "users": {
+    "dr.sarah@stridex.health": {
+      "id": "USR-DOC-001",
+      "name": "Dr. Sarah Jenkins",
+      "email": "dr.sarah@stridex.health",
+      "password": "demo1234",
+      "role": "doctor",
+      "specialty": "Physical Therapy & Rehabilitation",
+      "institution": "StrideX Medical Centre",
+      "medical_id": "PT-DPT-2024-001"
+    },
+    "patient@stridex.health": {
+      "id": "USR-PAT-001",
+      "name": "Eleanor Vance",
+      "email": "patient@stridex.health",
+      "password": "demo1234",
+      "role": "patient",
+      "dob": "1958-03-14",
+      "patient_id": "PT-10482",
+      "doctor_id": "USR-DOC-001"
+    }
+  },
+  "patients": {
+    "PT-10482": {
+      "id": "PT-10482",
+      "name": "Eleanor Vance",
+      "email": "patient@stridex.health",
+      "dob": "1958-03-14",
+      "gender": "Female",
+      "age": 67,
+      "doctor_id": "USR-DOC-001",
+      "condition": "Post-Op Knee Arthroscopy Recovery",
+      "created_at": "2026-09-01T09:00:00"
+    },
+    "PT-20833": {
+      "id": "PT-20833",
+      "name": "James Thornton",
+      "email": "j.thornton@example.com",
+      "dob": "1971-07-22",
+      "gender": "Male",
+      "age": 55,
+      "doctor_id": "USR-DOC-001",
+      "condition": "Lumbar Spinal Stenosis Management",
+      "created_at": "2026-09-03T11:30:00"
+    },
+    "PT-30517": {
+      "id": "PT-30517",
+      "name": "Maya Ramirez",
+      "email": "m.ramirez@example.com",
+      "dob": "1985-11-04",
+      "gender": "Female",
+      "age": 40,
+      "doctor_id": "USR-DOC-001",
+      "condition": "Parkinsonian Gait Monitoring",
+      "created_at": "2026-09-05T14:00:00"
+    }
+  },
+  "assessments": {
+    "ASM-DEMO-001": {
+      "id": "ASM-DEMO-001",
+      "patient_id": "PT-10482",
+      "patient_name": "Eleanor Vance",
+      "doctor_id": "USR-DOC-001",
+      "doctor_name": "Dr. Sarah Jenkins",
+      "date": "2026-09-14",
+      "walking_condition": "Level Ground \u2014 Comfortable Speed",
+      "camera_view": "Sagittal Lateral (Right Side)",
+      "notes": "Post-operative assessment \u2014 6 weeks after arthroscopic knee procedure.",
+      "video_filename": "sample walk.mp4",
+      "fps": 39.05,
+      "duration": 20.64,
+      "status": "completed",
+      "gait_score": 72,
+      "risk_level": "MODERATE",
+      "features": {
+        "left_knee_angle_mean": 142.94,
+        "right_knee_angle_mean": 158.82,
+        "left_knee_angle_min": 43.25,
+        "right_knee_angle_min": 112.09,
+        "left_knee_angle_max": 176.95,
+        "right_knee_angle_max": 177.95,
+        "left_knee_rom": 133.7,
+        "right_knee_rom": 65.86,
+        "left_angular_velocity": -4.53,
+        "right_angular_velocity": 0.1,
+        "left_angular_velocity_abs": 67.01,
+        "right_angular_velocity_abs": 58.29,
+        "left_ankle_angle_mean": 16.5,
+        "right_ankle_angle_mean": 9.04,
+        "com_x_mean": 0.0012,
+        "com_x_std": 0.0006,
+        "postural_sway": 0.0006,
+        "cadence": 180.0,
+        "step_asymmetry": 0.0,
+        "knee_angle_asymmetry": 15.88,
+        "knee_rom_asymmetry": 67.84,
+        "fps": 39.05,
+        "frame_count": 806,
+        "duration_seconds": 20.64,
+        "left_knee_samples": 778,
+        "right_knee_samples": 778,
+        "walking_speed": 1.95,
+        "step_length": 0.65,
+        "stride_length": 1.3,
+        "step_time": 0.33,
+        "stride_time": 0.67,
+        "symmetry_score": 84.1,
+        "detection_rate": 96.53,
+        "total_video_frames": 806,
+        "detected_frames": 778,
+        "video_width": 1920,
+        "video_height": 1080
+      },
+      "risk": {
+        "overall_risk": "MODERATE",
+        "screening_headline": "Monitoring Recommended \u2014 Mild Biomechanical Asymmetry",
+        "clinical_narrative": "Notable divergence in bilateral knee range of motion (67.8\u00b0 difference) detected. Cadence is elevated (180 spm). Recommend physiotherapy follow-up.",
+        "factors": [
+          {
+            "name": "Bilateral Symmetry",
+            "status": "caution",
+            "label": "Mild bilateral gait asymmetry detected",
+            "icon": "alert",
+            "score": 75
+          },
+          {
+            "name": "Cadence Regulation",
+            "status": "warning",
+            "label": "Cadence (180 spm) above typical community range",
+            "icon": "warning",
+            "score": 50
+          },
+          {
+            "name": "Knee Range of Motion",
+            "status": "warning",
+            "label": "Pronounced knee ROM difference (67.8\u00b0 asymmetry)",
+            "icon": "warning",
+            "score": 40
+          },
+          {
+            "name": "Postural Sway / Stability",
+            "status": "normal",
+            "label": "Center of mass trajectory remains stable",
+            "icon": "check",
+            "score": 94
+          },
+          {
+            "name": "Dynamic Angular Velocity",
+            "status": "caution",
+            "label": "Inter-limb angular velocity discrepancy (8.7\u00b0/s)",
+            "icon": "alert",
+            "score": 72
+          }
+        ],
+        "risk_contributions": [
+          {
+            "factor": "Symmetry",
+            "contribution": 30,
+            "status": "caution"
+          },
+          {
+            "factor": "Cadence",
+            "contribution": 20,
+            "status": "warning"
+          },
+          {
+            "factor": "Knee ROM",
+            "contribution": 25,
+            "status": "warning"
+          },
+          {
+            "factor": "Postural Sway",
+            "contribution": 15,
+            "status": "normal"
+          },
+          {
+            "factor": "Angular Velocity",
+            "contribution": 10,
+            "status": "caution"
+          }
+        ]
+      },
+      "created_at": "2026-09-14T10:32:00"
+    },
+    "ASM-DEMO-002": {
+      "id": "ASM-DEMO-002",
+      "patient_id": "PT-20833",
+      "patient_name": "James Thornton",
+      "doctor_id": "USR-DOC-001",
+      "doctor_name": "Dr. Sarah Jenkins",
+      "date": "2026-09-10",
+      "walking_condition": "Level Ground \u2014 Self-Selected Speed",
+      "camera_view": "Sagittal Lateral (Left Side)",
+      "notes": "Routine quarterly assessment.",
+      "video_filename": "james_walk_sept10.mp4",
+      "fps": 30.0,
+      "duration": 18.2,
+      "status": "completed",
+      "gait_score": 88,
+      "risk_level": "LOW",
+      "features": {
+        "left_knee_angle_mean": 142.94,
+        "right_knee_angle_mean": 158.82,
+        "left_knee_angle_min": 43.25,
+        "right_knee_angle_min": 112.09,
+        "left_knee_angle_max": 176.95,
+        "right_knee_angle_max": 177.95,
+        "left_knee_rom": 64.2,
+        "right_knee_rom": 61.8,
+        "left_angular_velocity": -4.53,
+        "right_angular_velocity": 0.1,
+        "left_angular_velocity_abs": 67.01,
+        "right_angular_velocity_abs": 58.29,
+        "left_ankle_angle_mean": 16.5,
+        "right_ankle_angle_mean": 9.04,
+        "com_x_mean": 0.0012,
+        "com_x_std": 0.0006,
+        "postural_sway": 0.0006,
+        "cadence": 108.0,
+        "step_asymmetry": 0.0,
+        "knee_angle_asymmetry": 15.88,
+        "knee_rom_asymmetry": 2.4,
+        "fps": 39.05,
+        "frame_count": 806,
+        "duration_seconds": 20.64,
+        "left_knee_samples": 778,
+        "right_knee_samples": 778,
+        "walking_speed": 1.18,
+        "step_length": 0.65,
+        "stride_length": 1.3,
+        "step_time": 0.33,
+        "stride_time": 0.67,
+        "symmetry_score": 91.2,
+        "detection_rate": 96.53,
+        "total_video_frames": 806,
+        "detected_frames": 778,
+        "video_width": 1920,
+        "video_height": 1080
+      },
+      "risk": {
+        "overall_risk": "LOW",
+        "screening_headline": "Routine Screening Profile \u2014 Normal Locomotor Characteristics",
+        "clinical_narrative": "Notable divergence in bilateral knee range of motion (67.8\u00b0 difference) detected. Cadence is elevated (180 spm). Recommend physiotherapy follow-up.",
+        "factors": [
+          {
+            "name": "Bilateral Symmetry",
+            "status": "caution",
+            "label": "Mild bilateral gait asymmetry detected",
+            "icon": "alert",
+            "score": 75
+          },
+          {
+            "name": "Cadence Regulation",
+            "status": "warning",
+            "label": "Cadence (180 spm) above typical community range",
+            "icon": "warning",
+            "score": 50
+          },
+          {
+            "name": "Knee Range of Motion",
+            "status": "warning",
+            "label": "Pronounced knee ROM difference (67.8\u00b0 asymmetry)",
+            "icon": "warning",
+            "score": 40
+          },
+          {
+            "name": "Postural Sway / Stability",
+            "status": "normal",
+            "label": "Center of mass trajectory remains stable",
+            "icon": "check",
+            "score": 94
+          },
+          {
+            "name": "Dynamic Angular Velocity",
+            "status": "caution",
+            "label": "Inter-limb angular velocity discrepancy (8.7\u00b0/s)",
+            "icon": "alert",
+            "score": 72
+          }
+        ],
+        "risk_contributions": [
+          {
+            "factor": "Symmetry",
+            "contribution": 30,
+            "status": "caution"
+          },
+          {
+            "factor": "Cadence",
+            "contribution": 20,
+            "status": "warning"
+          },
+          {
+            "factor": "Knee ROM",
+            "contribution": 25,
+            "status": "warning"
+          },
+          {
+            "factor": "Postural Sway",
+            "contribution": 15,
+            "status": "normal"
+          },
+          {
+            "factor": "Angular Velocity",
+            "contribution": 10,
+            "status": "caution"
+          }
+        ]
+      },
+      "created_at": "2026-09-10T14:15:00"
+    },
+    "ASM-DEMO-003": {
+      "id": "ASM-DEMO-003",
+      "patient_id": "PT-10482",
+      "patient_name": "Eleanor Vance",
+      "doctor_id": "USR-DOC-001",
+      "doctor_name": "Dr. Sarah Jenkins",
+      "date": "2026-08-20",
+      "walking_condition": "Level Ground \u2014 Comfortable Speed",
+      "camera_view": "Sagittal Lateral (Right Side)",
+      "notes": "Baseline pre-op assessment.",
+      "video_filename": "eleanor_baseline_aug20.mp4",
+      "fps": 30.0,
+      "duration": 22.1,
+      "status": "completed",
+      "gait_score": 68,
+      "risk_level": "HIGH",
+      "features": {
+        "left_knee_angle_mean": 142.94,
+        "right_knee_angle_mean": 158.82,
+        "left_knee_angle_min": 43.25,
+        "right_knee_angle_min": 112.09,
+        "left_knee_angle_max": 176.95,
+        "right_knee_angle_max": 177.95,
+        "left_knee_rom": 133.7,
+        "right_knee_rom": 65.86,
+        "left_angular_velocity": -4.53,
+        "right_angular_velocity": 0.1,
+        "left_angular_velocity_abs": 67.01,
+        "right_angular_velocity_abs": 58.29,
+        "left_ankle_angle_mean": 16.5,
+        "right_ankle_angle_mean": 9.04,
+        "com_x_mean": 0.0012,
+        "com_x_std": 0.0006,
+        "postural_sway": 0.0006,
+        "cadence": 195.0,
+        "step_asymmetry": 0.0,
+        "knee_angle_asymmetry": 15.88,
+        "knee_rom_asymmetry": 82.1,
+        "fps": 39.05,
+        "frame_count": 806,
+        "duration_seconds": 20.64,
+        "left_knee_samples": 778,
+        "right_knee_samples": 778,
+        "walking_speed": 2.12,
+        "step_length": 0.65,
+        "stride_length": 1.3,
+        "step_time": 0.33,
+        "stride_time": 0.67,
+        "symmetry_score": 71.3,
+        "detection_rate": 96.53,
+        "total_video_frames": 806,
+        "detected_frames": 778,
+        "video_width": 1920,
+        "video_height": 1080
+      },
+      "risk": {
+        "overall_risk": "HIGH",
+        "screening_headline": "Clinical Review Recommended \u2014 Notable Gait Irregularities",
+        "clinical_narrative": "Notable divergence in bilateral knee range of motion (67.8\u00b0 difference) detected. Cadence is elevated (180 spm). Recommend physiotherapy follow-up.",
+        "factors": [
+          {
+            "name": "Bilateral Symmetry",
+            "status": "caution",
+            "label": "Mild bilateral gait asymmetry detected",
+            "icon": "alert",
+            "score": 75
+          },
+          {
+            "name": "Cadence Regulation",
+            "status": "warning",
+            "label": "Cadence (180 spm) above typical community range",
+            "icon": "warning",
+            "score": 50
+          },
+          {
+            "name": "Knee Range of Motion",
+            "status": "warning",
+            "label": "Pronounced knee ROM difference (67.8\u00b0 asymmetry)",
+            "icon": "warning",
+            "score": 40
+          },
+          {
+            "name": "Postural Sway / Stability",
+            "status": "normal",
+            "label": "Center of mass trajectory remains stable",
+            "icon": "check",
+            "score": 94
+          },
+          {
+            "name": "Dynamic Angular Velocity",
+            "status": "caution",
+            "label": "Inter-limb angular velocity discrepancy (8.7\u00b0/s)",
+            "icon": "alert",
+            "score": 72
+          }
+        ],
+        "risk_contributions": [
+          {
+            "factor": "Symmetry",
+            "contribution": 30,
+            "status": "caution"
+          },
+          {
+            "factor": "Cadence",
+            "contribution": 20,
+            "status": "warning"
+          },
+          {
+            "factor": "Knee ROM",
+            "contribution": 25,
+            "status": "warning"
+          },
+          {
+            "factor": "Postural Sway",
+            "contribution": 15,
+            "status": "normal"
+          },
+          {
+            "factor": "Angular Velocity",
+            "contribution": 10,
+            "status": "caution"
+          }
+        ]
+      },
+      "created_at": "2026-08-20T09:05:00"
+    },
+    "ASM-1FC8F573": {
+      "id": "ASM-1FC8F573",
+      "patient_id": "PT-10482",
+      "patient_name": "Eleanor Vance",
+      "doctor_id": "USR-DOC-001",
+      "doctor_name": "Dr. Sarah Jenkins",
+      "date": "2026-09-15",
+      "walking_condition": "Level Ground \u2014 Comfortable Speed",
+      "camera_view": "Sagittal Lateral (Right Side)",
+      "notes": "kindly look for the sympotoms",
+      "status": "completed",
+      "created_at": "2026-09-16T00:49:28.391808",
+      "features": {
+        "left_knee_angle_mean": 152.40956035969393,
+        "right_knee_angle_mean": 157.7104596526642,
+        "left_knee_angle_min": 90.8060981840754,
+        "right_knee_angle_min": 118.0609647951147,
+        "left_knee_angle_max": 177.37393201342798,
+        "right_knee_angle_max": 177.645376733472,
+        "left_knee_rom": 86.56783382935258,
+        "right_knee_rom": 59.584411938357306,
+        "left_angular_velocity": -1.219103056570129,
+        "right_angular_velocity": -0.940511891516937,
+        "left_angular_velocity_abs": 76.58466534056714,
+        "right_angular_velocity_abs": 68.85565189150849,
+        "left_ankle_angle_mean": 14.79756808229221,
+        "right_ankle_angle_mean": 9.785250944488023,
+        "com_x_mean": 0.0012207789219734484,
+        "com_x_std": 0.0005894085019138346,
+        "postural_sway": 0.0005894085019138346,
+        "cadence": 151.15058538554703,
+        "step_asymmetry": 0.0,
+        "knee_angle_asymmetry": 5.300899292970286,
+        "knee_rom_asymmetry": 26.983421890995274,
+        "fps": 39.04723455793298,
+        "frame_count": 806,
+        "duration_seconds": 20.64166666666667,
+        "left_knee_samples": 778,
+        "right_knee_samples": 778,
+        "left_ankle_samples": 778,
+        "right_ankle_samples": 778,
+        "walking_speed": 1.64,
+        "step_length": 0.65,
+        "stride_length": 1.3,
+        "step_time": 0.4,
+        "stride_time": 0.8,
+        "video_width": 848,
+        "video_height": 384,
+        "total_video_frames": 806,
+        "detected_frames": 778,
+        "detection_rate": 96.53,
+        "symmetry_score": 97.3
+      },
+      "risk": {
+        "overall_risk": "LOW",
+        "screening_headline": "Routine Screening Profile \u2014 Normal Locomotor Characteristics",
+        "clinical_narrative": "Video-derived kinematic features demonstrate rhythmic step symmetry, preserved knee range of motion, and consistent center of mass trajectory within typical normative baselines.",
+        "factors": [
+          {
+            "name": "Bilateral Symmetry",
+            "status": "normal",
+            "label": "Symmetry within normative screening range",
+            "icon": "check",
+            "score": 95
+          },
+          {
+            "name": "Cadence Regulation",
+            "status": "warning",
+            "label": "Cadence (151 spm) indicates atypical tempo",
+            "icon": "warning",
+            "score": 50
+          },
+          {
+            "name": "Knee Range of Motion",
+            "status": "caution",
+            "label": "Moderate knee ROM difference (27.0\u00b0 asymmetry)",
+            "icon": "alert",
+            "score": 68
+          },
+          {
+            "name": "Postural Sway / Stability",
+            "status": "normal",
+            "label": "Center of mass trajectory remains stable",
+            "icon": "check",
+            "score": 94
+          },
+          {
+            "name": "Dynamic Angular Velocity",
+            "status": "normal",
+            "label": "Joint angular velocity balanced bilaterally",
+            "icon": "check",
+            "score": 90
+          }
+        ],
+        "risk_contributions": [
+          {
+            "factor": "Symmetry",
+            "contribution": 30,
+            "status": "normal"
+          },
+          {
+            "factor": "Cadence",
+            "contribution": 20,
+            "status": "caution"
+          },
+          {
+            "factor": "Knee ROM",
+            "contribution": 25,
+            "status": "normal"
+          },
+          {
+            "factor": "Postural Sway",
+            "contribution": 15,
+            "status": "normal"
+          },
+          {
+            "factor": "Angular Velocity",
+            "contribution": 10,
+            "status": "normal"
+          }
+        ]
+      },
+      "gait_score": 83,
+      "risk_level": "LOW",
+      "video_filename": "sample walk.mp4",
+      "video_path": "C:\\Users\\manod\\Desktop\\b2g - final - Copy\\uploads\\ASM-1FC8F573_sample walk.mp4",
+      "fps": 39.05,
+      "duration": 20.64,
+      "video_width": 848,
+      "video_height": 384,
+      "file_size_mb": 2.31,
+      "baseline_comparison": {
+        "cadence_change": -29.85,
+        "walking_speed_change": 1.49,
+        "symmetry_change": -1.0,
+        "knee_angle_change": 24.46,
+        "hip_angle_change": 7.0,
+        "step_variability_change": -0.5974
+      }
+    },
+    "ASM-75F14870": {
+      "id": "ASM-75F14870",
+      "patient_id": "PT-10482",
+      "patient_name": "Eleanor Vance",
+      "doctor_id": "USR-DOC-001",
+      "doctor_name": "Dr. Sarah Jenkins",
+      "date": "2026-09-15",
+      "walking_condition": "Level Ground \u2014 Comfortable Speed",
+      "camera_view": "Sagittal Lateral (Right Side)",
+      "notes": "  vcgjbnm",
+      "status": "created",
+      "created_at": "2026-09-16T00:51:56.540863",
+      "features": {},
+      "risk": {},
+      "gait_score": null,
+      "risk_level": null
+    },
+    "ASM-B7EE343D": {
+      "id": "ASM-B7EE343D",
+      "patient_id": "PT-20833",
+      "patient_name": "James Thornton",
+      "doctor_id": "USR-DOC-001",
+      "doctor_name": "Dr. Sarah Jenkins",
+      "date": "2026-09-15",
+      "walking_condition": "Level Ground \u2014 Comfortable Speed",
+      "camera_view": "Sagittal Lateral (Right Side)",
+      "notes": "",
+      "status": "completed",
+      "created_at": "2026-09-16T00:53:02.758429",
+      "features": {
+        "left_knee_angle_mean": 152.4898083619494,
+        "right_knee_angle_mean": 157.71539431827418,
+        "left_knee_angle_min": 90.8060981840754,
+        "right_knee_angle_min": 118.0609647951147,
+        "left_knee_angle_max": 177.37393201342798,
+        "right_knee_angle_max": 177.645376733472,
+        "left_knee_rom": 86.56783382935258,
+        "right_knee_rom": 59.584411938357306,
+        "left_angular_velocity": -1.8213153879830035,
+        "right_angular_velocity": -1.1544798823413307,
+        "left_angular_velocity_abs": 76.61070041576392,
+        "right_angular_velocity_abs": 69.14757620329168,
+        "left_ankle_angle_mean": 14.766663352273122,
+        "right_ankle_angle_mean": 9.784363746179118,
+        "com_x_mean": 0.0012184303504638766,
+        "com_x_std": 0.0005906721437664974,
+        "postural_sway": 0.0005906721437664974,
+        "cadence": 151.15058538554703,
+        "step_asymmetry": 0.0,
+        "knee_angle_asymmetry": 5.225585956324778,
+        "knee_rom_asymmetry": 26.983421890995274,
+        "fps": 39.04723455793298,
+        "frame_count": 806,
+        "duration_seconds": 20.64166666666667,
+        "left_knee_samples": 772,
+        "right_knee_samples": 772,
+        "left_ankle_samples": 772,
+        "right_ankle_samples": 772,
+        "walking_speed": 1.64,
+        "step_length": 0.65,
+        "stride_length": 1.3,
+        "step_time": 0.4,
+        "stride_time": 0.8,
+        "video_width": 848,
+        "video_height": 384,
+        "total_video_frames": 806,
+        "detected_frames": 778,
+        "detection_rate": 96.53,
+        "symmetry_score": 97.4
+      },
+      "risk": {
+        "overall_risk": "LOW",
+        "screening_headline": "Routine Screening Profile \u2014 Normal Locomotor Characteristics",
+        "clinical_narrative": "Video-derived kinematic features demonstrate rhythmic step symmetry, preserved knee range of motion, and consistent center of mass trajectory within typical normative baselines.",
+        "factors": [
+          {
+            "name": "Bilateral Symmetry",
+            "status": "normal",
+            "label": "Symmetry within normative screening range",
+            "icon": "check",
+            "score": 95
+          },
+          {
+            "name": "Cadence Regulation",
+            "status": "warning",
+            "label": "Cadence (151 spm) indicates atypical tempo",
+            "icon": "warning",
+            "score": 50
+          },
+          {
+            "name": "Knee Range of Motion",
+            "status": "caution",
+            "label": "Moderate knee ROM difference (27.0\u00b0 asymmetry)",
+            "icon": "alert",
+            "score": 68
+          },
+          {
+            "name": "Postural Sway / Stability",
+            "status": "normal",
+            "label": "Center of mass trajectory remains stable",
+            "icon": "check",
+            "score": 94
+          },
+          {
+            "name": "Dynamic Angular Velocity",
+            "status": "normal",
+            "label": "Joint angular velocity balanced bilaterally",
+            "icon": "check",
+            "score": 90
+          }
+        ],
+        "risk_contributions": [
+          {
+            "factor": "Symmetry",
+            "contribution": 30,
+            "status": "normal"
+          },
+          {
+            "factor": "Cadence",
+            "contribution": 20,
+            "status": "caution"
+          },
+          {
+            "factor": "Knee ROM",
+            "contribution": 25,
+            "status": "normal"
+          },
+          {
+            "factor": "Postural Sway",
+            "contribution": 15,
+            "status": "normal"
+          },
+          {
+            "factor": "Angular Velocity",
+            "contribution": 10,
+            "status": "normal"
+          }
+        ]
+      },
+      "gait_score": 84,
+      "risk_level": "LOW",
+      "video_filename": "sample walk.mp4",
+      "video_path": "C:\\Users\\manod\\Desktop\\b2g - final - Copy\\uploads\\ASM-B7EE343D_sample walk.mp4",
+      "fps": 39.05,
+      "duration": 20.64,
+      "video_width": 848,
+      "video_height": 384,
+      "file_size_mb": 2.31,
+      "baseline_comparison": {
+        "cadence_change": 0.0,
+        "walking_speed_change": 0.0,
+        "symmetry_change": 0.1,
+        "knee_angle_change": 0.04,
+        "hip_angle_change": 0.0,
+        "step_variability_change": 0.0
+      }
+    }
+  }
+}
